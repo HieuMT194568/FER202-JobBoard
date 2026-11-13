@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Table, Button, Alert, Spinner, Card, Modal, ButtonGroup } from 'react-bootstrap'
 import { useAuth } from '../../context/AuthContext'
-import { jobApi, applicationApi } from '../../api/services'
+import { jobApi, applicationApi, sameId } from '../../api/services'
 import StatusBadge from '../../components/StatusBadge'
 import { formatDate } from '../../utils/format'
 
@@ -35,7 +35,7 @@ function JobApplicants() {
         <Spinner animation="border" />
       </div>
     )
-  if (!job || job.employerId !== user.id) return <Alert variant="danger">Không tìm thấy tin tuyển dụng.</Alert>
+  if (!job || !sameId(job.employerId, user.id)) return <Alert variant="danger">Không tìm thấy tin tuyển dụng.</Alert>
 
   return (
     <>

@@ -7,7 +7,7 @@ import JobCard from '../../components/JobCard'
 
 function SavedJobs() {
   // Danh sách id việc đã lưu lấy từ localStorage, thông tin job lấy từ JSON Server
-  const { savedIds } = useSavedJobs()
+  const { isSaved } = useSavedJobs()
   const [allJobs, setAllJobs] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -19,7 +19,7 @@ function SavedJobs() {
   }, [])
 
   // Bỏ qua tin đã bị xóa; bỏ lưu thì tin biến mất khỏi danh sách ngay
-  const jobs = allJobs.filter((job) => savedIds.includes(job.id))
+  const jobs = allJobs.filter((job) => isSaved(job.id))
 
   return (
     <>

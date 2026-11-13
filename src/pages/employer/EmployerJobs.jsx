@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Button, Alert, Spinner, Card, ButtonGroup } from 'react-bootstrap'
 import { useAuth } from '../../context/AuthContext'
-import { jobApi, applicationApi } from '../../api/services'
+import { jobApi, applicationApi, sameId } from '../../api/services'
 import StatusBadge from '../../components/StatusBadge'
 import ConfirmModal from '../../components/ConfirmModal'
 import { formatDate, formatSalary, isExpired } from '../../utils/format'
@@ -15,7 +15,7 @@ function EmployerJobs() {
   const [deleting, setDeleting] = useState(null)
 
   useEffect(() => {
-    Promise.all([jobApi.getAll({ employerId: user.id, _sort: 'id', _order: 'desc' }), applicationApi.getAll()])
+    Promise.all([jobApi.getAll({ employerId: user.id }), applicationApi.getAll()])
       .then(([jobData, appData]) => {
         setJobs(jobData)
         setApplications(appData)
@@ -23,10 +23,10 @@ function EmployerJobs() {
       .finally(() => setLoading(false))
   }, [user.id])
 
-  const countApplicants = (jobId) => applications.filter((a) => a.jobId === jobId).length
+  const countApplicants = (jobId) => applications.filter((a) => sameId(a.jobId, jobId)).length
 
   const handleDelete = async () => {
-    // JSON Server tự xóa các applications có jobId tương ứng
+    // jobApi.remove xóa luôn các hồ sơ ứng tuyển của tin này
     await jobApi.remove(deleting.id)
     setJobs(jobs.filter((j) => j.id !== deleting.id))
     setDeleting(null)

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Row, Col, Form, Button, Card, Spinner } from 'react-bootstrap'
-import { jobApi, categoryApi } from '../api/services'
+import { jobApi, categoryApi, sameId } from '../api/services'
 import JobCard from '../components/JobCard'
 import { LOCATIONS } from '../utils/format'
 
@@ -14,7 +14,7 @@ function Home() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    Promise.all([jobApi.getAll({ status: 'approved', _sort: 'createdAt', _order: 'desc' }), categoryApi.getAll()])
+    Promise.all([jobApi.getAll({ status: 'approved' }), categoryApi.getAll()])
       .then(([jobData, catData]) => {
         setJobs(jobData)
         setCategories(catData)
@@ -30,7 +30,7 @@ function Home() {
     navigate(`/jobs?${params.toString()}`)
   }
 
-  const getCategoryName = (id) => categories.find((c) => c.id === id)?.name
+  const getCategoryName = (id) => categories.find((c) => sameId(c.id, id))?.name
 
   return (
     <>
@@ -71,7 +71,7 @@ function Home() {
             <Card as={Link} to={`/jobs?categoryId=${c.id}`} className="text-center text-decoration-none h-100 job-card">
               <Card.Body>
                 <div className="fw-semibold">{c.name}</div>
-                <small className="text-muted">{jobs.filter((j) => j.categoryId === c.id).length} việc làm</small>
+                <small className="text-muted">{jobs.filter((j) => sameId(j.categoryId, c.id)).length} việc làm</small>
               </Card.Body>
             </Card>
           </Col>

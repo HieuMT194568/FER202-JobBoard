@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Table, Button, Spinner, Card, Form, Row, Col, Modal, Alert, ButtonGroup } from 'react-bootstrap'
 import { useAuth } from '../../context/AuthContext'
-import { userApi } from '../../api/services'
+import { userApi, sameId } from '../../api/services'
 import StatusBadge from '../../components/StatusBadge'
 import ConfirmModal from '../../components/ConfirmModal'
 import { ROLE_LABELS } from '../../utils/format'
@@ -12,7 +12,7 @@ function validate(form, users, isEdit) {
   const errors = {}
   if (form.name.trim().length < 2) errors.name = 'Họ tên tối thiểu 2 ký tự'
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errors.email = 'Email không hợp lệ'
-  else if (users.some((u) => u.id !== form.id && u.email === form.email.trim())) errors.email = 'Email đã tồn tại'
+  else if (users.some((u) => !sameId(u.id, form.id) && u.email === form.email.trim())) errors.email = 'Email đã tồn tại'
   if (!/^0\d{9}$/.test(form.phone)) errors.phone = 'Số điện thoại gồm 10 số, bắt đầu bằng 0'
   if (!isEdit && form.password.length < 6) errors.password = 'Mật khẩu tối thiểu 6 ký tự'
   if (form.role === 'employer' && !form.companyName?.trim()) errors.companyName = 'Vui lòng nhập tên công ty'
@@ -160,7 +160,7 @@ function ManageUsers() {
                     <Button variant="outline-secondary" onClick={() => openEdit(u)}>
                       Sửa
                     </Button>
-                    {u.id !== currentUser.id && (
+                    {!sameId(u.id, currentUser.id) && (
                       <>
                         <Button variant="outline-warning" onClick={() => toggleLock(u)}>
                           {u.status === 'locked' ? 'Mở khóa' : 'Khóa'}
@@ -209,7 +209,7 @@ function ManageUsers() {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Vai trò</Form.Label>
-              <Form.Select name="role" value={form.role} onChange={handleChange} disabled={form.id === currentUser.id}>
+              <Form.Select name="role" value={form.role} onChange={handleChange} disabled={sameId(form.id, currentUser.id)}>
                 {Object.entries(ROLE_LABELS).map(([value, label]) => (
                   <option key={value} value={value}>
                     {label}

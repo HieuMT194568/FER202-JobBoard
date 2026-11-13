@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { Row, Col, Card, Badge, Button, Modal, Form, Alert, Spinner } from 'react-bootstrap'
-import { jobApi, applicationApi } from '../api/services'
+import { jobApi, applicationApi, sameId } from '../api/services'
 import { useAuth } from '../context/AuthContext'
 import { useSavedJobs } from '../context/SavedJobsContext'
 import { formatSalary, formatDate, isExpired, today } from '../utils/format'
@@ -25,7 +25,7 @@ function JobDetail() {
   const navigate = useNavigate()
   const { user } = useAuth()
   const { isSaved, toggleSave } = useSavedJobs()
-  const saved = isSaved(Number(id))
+  const saved = isSaved(id)
 
   const [job, setJob] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -46,7 +46,7 @@ function JobDetail() {
   // Kiểm tra ứng viên đã nộp đơn cho job này chưa
   useEffect(() => {
     if (user?.role === 'candidate') {
-      applicationApi.getAll({ jobId: id, candidateId: user.id }).then((list) => setMyApplication(list[0] || null))
+      applicationApi.findOne(id, user.id).then(setMyApplication)
     }
   }, [id, user])
 
@@ -58,7 +58,7 @@ function JobDetail() {
     )
 
   // Tin chưa duyệt chỉ chủ tin và admin xem được
-  const canView = job && (job.status === 'approved' || user?.role === 'admin' || user?.id === job.employerId)
+  const canView = job && (job.status === 'approved' || user?.role === 'admin' || sameId(user?.id, job.employerId))
   if (!canView)
     return (
       <Alert variant="warning">

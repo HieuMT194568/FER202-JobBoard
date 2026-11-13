@@ -196,24 +196,6 @@
       "deadline": "2026-12-31",
       "createdAt": "2026-11-02",
       "status": "pending"
-    },
-    {
-      "title": "12345",
-      "categoryId": 1,
-      "location": "Hà Nội",
-      "type": "Full-time",
-      "experience": "Dưới 1 năm",
-      "salaryMin": 5,
-      "salaryMax": 15,
-      "deadline": "2026-11-20",
-      "description": "1234567891234568912345678",
-      "requirements": "123",
-      "benefits": "123",
-      "status": "approved",
-      "employerId": 6,
-      "companyName": "123",
-      "createdAt": "2026-11-13",
-      "id": 8
     }
   ],
   "applications": [

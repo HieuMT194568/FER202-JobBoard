@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col, Card, Spinner, Table, ProgressBar } from 'react-bootstrap'
-import { userApi, jobApi, applicationApi, categoryApi } from '../../api/services'
+import { userApi, jobApi, applicationApi, categoryApi, sameId } from '../../api/services'
 
 function StatCard({ icon, label, value, color, to }) {
   return (
@@ -61,7 +61,7 @@ function AdminDashboard() {
             <Card.Header className="fw-semibold">Số tin tuyển dụng theo ngành nghề</Card.Header>
             <Card.Body>
               {categories.map((c) => {
-                const n = count(jobs, 'categoryId', c.id)
+                const n = jobs.filter((j) => sameId(j.categoryId, c.id)).length
                 return (
                   <div key={c.id} className="mb-3">
                     <div className="d-flex justify-content-between small">

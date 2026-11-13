@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Row, Col, Form, Button, Card, Spinner, Pagination, Alert } from 'react-bootstrap'
-import { jobApi, categoryApi } from '../api/services'
+import { jobApi, categoryApi, sameId } from '../api/services'
 import JobCard from '../components/JobCard'
 import { JOB_TYPES, LOCATIONS } from '../utils/format'
 
@@ -49,7 +49,7 @@ function JobList() {
       (j) =>
         (!kw || j.title.toLowerCase().includes(kw) || j.companyName.toLowerCase().includes(kw)) &&
         (!location || j.location === location) &&
-        (!categoryId || j.categoryId === Number(categoryId)) &&
+        (!categoryId || sameId(j.categoryId, categoryId)) &&
         (!type || j.type === type) &&
         (!minSalary || j.salaryMax >= Number(minSalary)),
     )
@@ -61,7 +61,7 @@ function JobList() {
   const totalPages = Math.max(1, Math.ceil(filteredJobs.length / PAGE_SIZE))
   const pageJobs = filteredJobs.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
-  const getCategoryName = (id) => categories.find((c) => c.id === id)?.name
+  const getCategoryName = (id) => categories.find((c) => sameId(c.id, id))?.name
 
   return (
     <Row className="g-4">

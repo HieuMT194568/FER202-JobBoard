@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Table, Button, Spinner, Card, Form, InputGroup, Alert } from 'react-bootstrap'
-import { categoryApi, jobApi } from '../../api/services'
+import { categoryApi, jobApi, sameId } from '../../api/services'
 import ConfirmModal from '../../components/ConfirmModal'
 
 function ManageCategories() {
@@ -45,7 +45,7 @@ function ManageCategories() {
     setError('')
   }
 
-  const countJobs = (id) => jobs.filter((j) => j.categoryId === id).length
+  const countJobs = (id) => jobs.filter((j) => sameId(j.categoryId, id)).length
 
   const askDelete = (c) => {
     if (countJobs(c.id) > 0) return setError(`Không thể xóa "${c.name}" vì đang có tin tuyển dụng thuộc ngành này`)

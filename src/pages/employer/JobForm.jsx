@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Card, Form, Button, Row, Col, Alert, Spinner } from 'react-bootstrap'
 import { useAuth } from '../../context/AuthContext'
-import { jobApi, categoryApi } from '../../api/services'
+import { jobApi, categoryApi, sameId } from '../../api/services'
 import { JOB_TYPES, LOCATIONS, EXPERIENCES, today } from '../../utils/format'
 
 const EMPTY_JOB = {
@@ -52,7 +52,7 @@ function JobForm() {
       jobApi
         .getById(id)
         .then((job) => {
-          if (job.employerId !== user.id) return setNotAllowed(true)
+          if (!sameId(job.employerId, user.id)) return setNotAllowed(true)
           // eslint-disable-next-line no-unused-vars
           const { category, ...rest } = job
           setForm(rest)
@@ -73,7 +73,8 @@ function JobForm() {
     const data = {
       ...form,
       title: form.title.trim(),
-      categoryId: Number(form.categoryId),
+      // giữ đúng kiểu id của category (số với json-server 0.17, chuỗi với 1.0)
+      categoryId: categories.find((c) => sameId(c.id, form.categoryId)).id,
       salaryMin: Number(form.salaryMin),
       salaryMax: Number(form.salaryMax),
       status: 'pending', // tin mới hoặc vừa sửa đều phải chờ admin duyệt lại

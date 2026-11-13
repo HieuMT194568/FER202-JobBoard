@@ -12,10 +12,13 @@ ReactJS (Vite) · React Router · Context API + localStorage · Axios · React-B
 ## Cách chạy
 ```bash
 npm install
-npm start          # chạy cùng lúc JSON Server (cổng 9998) và web (cổng 3000)
+npm start          # chạy cùng lúc JSON Server (cổng 9999) và web (cổng 3000)
 ```
 Hoặc chạy riêng ở 2 terminal: `npm run server` và `npm run dev`.
 
+> Chạy được với cả json-server 0.17.4 (cài sẵn trong project, dùng qua `npm run server`) và json-server 1.0 cài global.
+> Nếu cổng 9999 đang bị chiếm thì tắt JSON Server cũ trước khi chạy.
+>
 > Muốn đổi cổng API: sửa `--port` trong `package.json` (script `server`) và `baseURL` trong `src/api/axiosClient.js`.
 
 ## Tài khoản demo (mật khẩu: `123456`)

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // Địa chỉ JSON Server (chạy bằng lệnh: npm run server)
 const axiosClient = axios.create({
-  baseURL: 'http://localhost:9998',
+  baseURL: 'http://localhost:9999',
   headers: { 'Content-Type': 'application/json' },
 })
 

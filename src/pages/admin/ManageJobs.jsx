@@ -21,7 +21,7 @@ function ManageJobs() {
 
   useEffect(() => {
     jobApi
-      .getAll({ _sort: 'id', _order: 'desc' })
+      .getAll()
       .then(setJobs)
       .finally(() => setLoading(false))
   }, [])
