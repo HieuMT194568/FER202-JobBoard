@@ -1,0 +1,257 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Quản trị viên",
+      "email": "admin@jobhub.vn",
+      "password": "123456",
+      "role": "admin",
+      "phone": "0900000000",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "name": "Nguyễn Văn Tuyển",
+      "email": "hr@fpt.vn",
+      "password": "123456",
+      "role": "employer",
+      "phone": "0911111111",
+      "companyName": "FPT Software",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "name": "Trần Thị Nhân",
+      "email": "hr@vng.vn",
+      "password": "123456",
+      "role": "employer",
+      "phone": "0922222222",
+      "companyName": "VNG Corporation",
+      "status": "active"
+    },
+    {
+      "id": 4,
+      "name": "Lê Minh An",
+      "email": "an@gmail.com",
+      "password": "123456",
+      "role": "candidate",
+      "phone": "0933333333",
+      "status": "active"
+    },
+    {
+      "id": 5,
+      "name": "Phạm Thu Hà",
+      "email": "ha@gmail.com",
+      "password": "123456",
+      "role": "candidate",
+      "phone": "0944444444",
+      "status": "active"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Công nghệ thông tin"
+    },
+    {
+      "id": 2,
+      "name": "Marketing"
+    },
+    {
+      "id": 3,
+      "name": "Kế toán - Tài chính"
+    },
+    {
+      "id": 4,
+      "name": "Thiết kế"
+    },
+    {
+      "id": 5,
+      "name": "Kinh doanh - Bán hàng"
+    }
+  ],
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Frontend Developer (ReactJS)",
+      "employerId": 2,
+      "companyName": "FPT Software",
+      "categoryId": 1,
+      "location": "Hà Nội",
+      "salaryMin": 15,
+      "salaryMax": 25,
+      "type": "Full-time",
+      "experience": "1-2 năm",
+      "description": "Phát triển giao diện web cho các dự án khách hàng Nhật Bản sử dụng ReactJS.",
+      "requirements": "Thành thạo HTML, CSS, JavaScript, ReactJS. Biết Redux là lợi thế.",
+      "benefits": "Lương tháng 13, bảo hiểm đầy đủ, du lịch hằng năm.",
+      "deadline": "2026-12-31",
+      "createdAt": "2026-10-20",
+      "status": "approved"
+    },
+    {
+      "id": 2,
+      "title": "Thực tập sinh Java Backend",
+      "employerId": 2,
+      "companyName": "FPT Software",
+      "categoryId": 1,
+      "location": "Hà Nội",
+      "salaryMin": 3,
+      "salaryMax": 5,
+      "type": "Internship",
+      "experience": "Không yêu cầu",
+      "description": "Tham gia phát triển REST API với Spring Boot cùng team dự án.",
+      "requirements": "Sinh viên năm 3-4 ngành CNTT, biết Java OOP, SQL cơ bản.",
+      "benefits": "Được đào tạo, có cơ hội lên nhân viên chính thức.",
+      "deadline": "2026-12-15",
+      "createdAt": "2026-10-25",
+      "status": "approved"
+    },
+    {
+      "id": 3,
+      "title": "Digital Marketing Executive",
+      "employerId": 3,
+      "companyName": "VNG Corporation",
+      "categoryId": 2,
+      "location": "TP. Hồ Chí Minh",
+      "salaryMin": 12,
+      "salaryMax": 18,
+      "type": "Full-time",
+      "experience": "2-3 năm",
+      "description": "Lên kế hoạch và triển khai các chiến dịch quảng cáo Facebook, Google cho sản phẩm game.",
+      "requirements": "Có kinh nghiệm chạy ads, phân tích số liệu, sáng tạo nội dung.",
+      "benefits": "Thưởng theo KPI, môi trường trẻ trung.",
+      "deadline": "2026-11-30",
+      "createdAt": "2026-10-18",
+      "status": "approved"
+    },
+    {
+      "id": 4,
+      "title": "UI/UX Designer",
+      "employerId": 3,
+      "companyName": "VNG Corporation",
+      "categoryId": 4,
+      "location": "TP. Hồ Chí Minh",
+      "salaryMin": 18,
+      "salaryMax": 30,
+      "type": "Full-time",
+      "experience": "3-5 năm",
+      "description": "Thiết kế giao diện ứng dụng di động và web cho các sản phẩm của công ty.",
+      "requirements": "Thành thạo Figma, có portfolio, hiểu về design system.",
+      "benefits": "Macbook làm việc, 15 ngày phép/năm.",
+      "deadline": "2026-12-20",
+      "createdAt": "2026-10-28",
+      "status": "approved"
+    },
+    {
+      "id": 5,
+      "title": "Nhân viên Kế toán tổng hợp",
+      "employerId": 2,
+      "companyName": "FPT Software",
+      "categoryId": 3,
+      "location": "Đà Nẵng",
+      "salaryMin": 10,
+      "salaryMax": 14,
+      "type": "Full-time",
+      "experience": "1-2 năm",
+      "description": "Thực hiện hạch toán, lập báo cáo thuế và báo cáo tài chính định kỳ.",
+      "requirements": "Tốt nghiệp chuyên ngành Kế toán, sử dụng thành thạo Excel, MISA.",
+      "benefits": "Bảo hiểm, phụ cấp ăn trưa, gửi xe.",
+      "deadline": "2026-12-10",
+      "createdAt": "2026-10-30",
+      "status": "approved"
+    },
+    {
+      "id": 6,
+      "title": "Nhân viên Kinh doanh Part-time",
+      "employerId": 3,
+      "companyName": "VNG Corporation",
+      "categoryId": 5,
+      "location": "Hà Nội",
+      "salaryMin": 5,
+      "salaryMax": 8,
+      "type": "Part-time",
+      "experience": "Không yêu cầu",
+      "description": "Tư vấn sản phẩm, chăm sóc khách hàng doanh nghiệp.",
+      "requirements": "Giao tiếp tốt, nhiệt tình, có thể làm 4 tiếng/ngày.",
+      "benefits": "Hoa hồng hấp dẫn, giờ giấc linh hoạt.",
+      "deadline": "2026-11-25",
+      "createdAt": "2026-11-01",
+      "status": "approved"
+    },
+    {
+      "id": 7,
+      "title": "Mobile Developer (React Native)",
+      "employerId": 2,
+      "companyName": "FPT Software",
+      "categoryId": 1,
+      "location": "Remote",
+      "salaryMin": 20,
+      "salaryMax": 35,
+      "type": "Remote",
+      "experience": "2-3 năm",
+      "description": "Phát triển ứng dụng di động đa nền tảng bằng React Native.",
+      "requirements": "Có ít nhất 1 app đã publish trên store.",
+      "benefits": "Làm việc từ xa 100%, thiết bị hỗ trợ.",
+      "deadline": "2026-12-31",
+      "createdAt": "2026-11-02",
+      "status": "pending"
+    },
+    {
+      "title": "12345",
+      "categoryId": 1,
+      "location": "Hà Nội",
+      "type": "Full-time",
+      "experience": "Dưới 1 năm",
+      "salaryMin": 5,
+      "salaryMax": 15,
+      "deadline": "2026-11-20",
+      "description": "1234567891234568912345678",
+      "requirements": "123",
+      "benefits": "123",
+      "status": "approved",
+      "employerId": 6,
+      "companyName": "123",
+      "createdAt": "2026-11-13",
+      "id": 8
+    }
+  ],
+  "applications": [
+    {
+      "id": 1,
+      "jobId": 1,
+      "candidateId": 4,
+      "fullName": "Lê Minh An",
+      "email": "an@gmail.com",
+      "phone": "0933333333",
+      "cvLink": "https://drive.google.com/cv-le-minh-an",
+      "coverLetter": "Em có 1 năm kinh nghiệm ReactJS và rất mong muốn được làm việc tại FPT.",
+      "status": "pending",
+      "createdAt": "2026-10-22"
+    },
+    {
+      "id": 2,
+      "jobId": 3,
+      "candidateId": 5,
+      "fullName": "Phạm Thu Hà",
+      "email": "ha@gmail.com",
+      "phone": "0944444444",
+      "cvLink": "https://drive.google.com/cv-pham-thu-ha",
+      "coverLetter": "Tôi đã chạy quảng cáo cho 3 thương hiệu thời trang trong 2 năm.",
+      "status": "accepted",
+      "createdAt": "2026-10-20"
+    },
+    {
+      "fullName": "user1",
+      "email": "user1@gmail.com",
+      "phone": "0987654322",
+      "cvLink": "http://123",
+      "coverLetter": "123123123123123123123",
+      "jobId": 6,
+      "candidateId": 7,
+      "status": "pending",
+      "createdAt": "2026-11-13",
+      "id": 3
+    }
+  ]
+}
